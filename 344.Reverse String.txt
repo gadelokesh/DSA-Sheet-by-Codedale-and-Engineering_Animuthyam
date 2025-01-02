@@ -1,0 +1,13 @@
+class Solution(object):
+    def reverseString(self, s):
+        # Two pointers, left pointing to the start and right pointing to the end of the list
+        left =0
+        right = len(s)-1
+
+        while left < right :
+            # Swap the characters at positions i and j
+            s[left], s[right] = s[right], s[left]
+
+            # Move i one step forward and j one step backward
+            left += 1
+            right -= 1
