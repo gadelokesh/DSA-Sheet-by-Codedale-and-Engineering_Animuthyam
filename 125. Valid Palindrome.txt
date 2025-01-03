@@ -1,0 +1,11 @@
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        #Convert the string to lowercase and filter out non-alphanumeric characters
+        filtered = ''.join(char.lower() for char in s if char.isalnum())
+        
+        #Check if the filtered string reads the same forward and backward
+        return filtered == filtered[::-1]
