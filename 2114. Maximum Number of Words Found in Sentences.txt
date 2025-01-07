@@ -1,0 +1,11 @@
+
+class Solution:
+    def mostWordsFound(self, sentences: List[str]) -> int:
+        ans = 0
+        for sentence in sentences:
+            # Count the number of words in the current sentence
+            num_words = len(sentence.split())
+            # Update the maximum number of words found
+            ans = max(ans, num_words)
+        
+        return ans
