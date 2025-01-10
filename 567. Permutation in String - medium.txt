@@ -1,0 +1,33 @@
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        # Initialize character counts for s1
+        s1_count = [0] * 26
+        s2_count = [0] * 26
+        length_s1 = len(s1)
+        length_s2 = len(s2)
+        
+        # Base case: if s1 is longer than s2, return False
+        if length_s1 > length_s2:
+            return False
+        
+        # Fill the character counts for s1 and the first window of s2
+        for i in range(length_s1):
+            s1_count[ord(s1[i]) - ord('a')] += 1
+            s2_count[ord(s2[i]) - ord('a')] += 1
+        
+        # Check if the first window matches
+        if s1_count == s2_count:
+            return True
+        
+        # Slide the window over s2
+        for i in range(length_s1, length_s2):
+            # Include the next character in the window
+            s2_count[ord(s2[i]) - ord('a')] += 1
+            # Remove the character that's no longer in the window
+            s2_count[ord(s2[i - length_s1]) - ord('a')] -= 1
+            
+            # Check if the current window matches
+            if s1_count == s2_count:
+                return True
+        
+        return False
