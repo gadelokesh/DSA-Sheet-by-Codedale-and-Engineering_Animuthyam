@@ -1,0 +1,15 @@
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        # Using a set to keep track of seen elements
+        seen = set()
+        
+        # Iterating through each element in the nums array
+        for num in nums:
+            # If the number is already in the set, we found a duplicate
+            if num in seen:
+                return True
+            # Add the number to the set as it's seen for the first time
+            seen.add(num)
+        
+        # If we finish the loop without finding a duplicate, return False
+        return False
