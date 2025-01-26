@@ -1,0 +1,25 @@
+class Solution:
+    def findSubstring(self, s: str, words: List[str]) -> List[int]:
+        if not s or not words:
+            return []
+
+        word_len = len(words[0])
+        word_count = len(words)
+        total_len = word_len * word_count
+        word_map = Counter(words)  # Count the frequency of each word
+        result = []
+
+        for i in range(len(s) - total_len + 1):  # Loop through the string
+            seen = defaultdict(int)
+            for j in range(0, total_len, word_len):  # Check substring of length `total_len`
+                word = s[i + j:i + j + word_len]
+                if word in word_map:
+                    seen[word] += 1
+                    if seen[word] > word_map[word]:
+                        break
+                else:
+                    break
+            if seen == word_map:
+                result.append(i)
+
+        return result
