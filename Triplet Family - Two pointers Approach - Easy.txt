@@ -1,0 +1,16 @@
+class Solution:
+
+    def findTriplet(self, arr):
+        n = len(arr)
+        arr.sort()
+        for i in range(n - 1, -1, -1):
+            j = 0
+            k = i - 1
+            while j < k:
+                if arr[i] == arr[j] + arr[k]:
+                    return True
+                elif arr[i] > arr[j] + arr[k]:
+                    j += 1
+                else:
+                    k -= 1
+        return False
